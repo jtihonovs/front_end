@@ -1,0 +1,27 @@
+@nthColors: #FF5460, #FF9D84, #F0E797,#75B08A;
+@from : 1;
+@to : 4;
+
+div {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    // background-color: #ccc;
+    top: 45%;
+    border-radius: 50%;
+}
+
+.loop(@i) when (@i =< @to) {
+    div:nth-child(@{i}) {
+        background-color: extract(@nthColors, @i);
+        animation: move 2s ((@i - 1) * 150ms) infinite cubic-bezier(.2,.64,.81,.23);
+    }
+    .loop(@i + 1);
+}
+
+.loop(@from);
+
+@keyframes move {
+    0% {left: 0%;}
+    100% {left:100%;}
+}
