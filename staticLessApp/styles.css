@@ -1,25 +1,73 @@
-div {
+.loading-ball {
   width: 30px;
   height: 30px;
   position: absolute;
   top: 45%;
   border-radius: 50%;
 }
-div:nth-child(1) {
+.loadingBlue .loading-ball:nth-child(1) {
+  background-color: #2460A7FF;
+  animation: move 2s 0ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+}
+.loadingBlue .loading-ball:nth-child(2) {
+  background-color: #4277b8;
+  animation: move 2s 150ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+}
+.loadingBlue .loading-ball:nth-child(3) {
+  background-color: #85B3D1FF;
+  animation: move 2s 300ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+}
+.loadingBlue .loading-ball:nth-child(4) {
+  background-color: #adc2d3;
+  animation: move 2s 450ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+}
+.loadingColorful .loading-ball:nth-child(1) {
   background-color: #FF5460;
   animation: move 2s 0ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
 }
-div:nth-child(2) {
+.loadingColorful .loading-ball:nth-child(2) {
   background-color: #FF9D84;
   animation: move 2s 150ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
 }
-div:nth-child(3) {
+.loadingColorful .loading-ball:nth-child(3) {
   background-color: #F0E797;
   animation: move 2s 300ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
 }
-div:nth-child(4) {
+.loadingColorful .loading-ball:nth-child(4) {
   background-color: #75B08A;
   animation: move 2s 450ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+}
+@-webkit-keyframes move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@-moz-keyframes move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@-ms-keyframes move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@-o-keyframes move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 @keyframes move {
   0% {

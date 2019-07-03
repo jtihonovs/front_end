@@ -1,8 +1,13 @@
-@nthColors: #FF5460, #FF9D84, #F0E797,#75B08A;
+@nthColorful: #FF5460, #FF9D84, #F0E797,#75B08A;
+@nthColorsBlue: #2460A7FF,#4277b8,#85B3D1FF,#adc2d3; 
 @from : 1;
 @to : 4;
-
-div {
+// @mixi-frames: {
+//     0% {left: 0%;}
+//     100% {left:100%;}
+// }
+// Ball object
+.loading-ball {
     width: 30px;
     height: 30px;
     position: absolute;
@@ -11,17 +16,73 @@ div {
     border-radius: 50%;
 }
 
-.loop(@i) when (@i =< @to) {
-    div:nth-child(@{i}) {
-        background-color: extract(@nthColors, @i);
-        animation: move 2s ((@i - 1) * 150ms) infinite cubic-bezier(.2,.64,.81,.23);
+// Function that loops '@to - @from + 1`' times and creates 'loading-ball' objects with 'move' animaiton
+.loading(@from, @color){
+    .loop(@i) when (@i =< @to) {
+        .loading-ball:nth-child(@{i}) {
+            background-color: extract(@color, @i);
+            animation: move 2s ((@i - 1) * 150ms) infinite cubic-bezier(.2,.64,.81,.23);
+        }
+        .loop(@i + 1);
     }
-    .loop(@i + 1);
+    .loop(@from)
 }
 
-.loop(@from);
 
-@keyframes move {
+.loadingBlue{
+    .loading(@from, @nthColorsBlue);
+}
+
+.loadingColorful{
+    .loading(@from, @nthColorful);
+}
+
+// Key frames
+
+// .keyframes(@name; @arguments) {
+// 	@-moz-keyframes @name { @arguments(); }
+// 	@-webkit-keyframes @name { @arguments(); }
+// 	@keyframes @name { @arguments(); }
+// }
+
+// .animation(@arguments) {
+// 	-webkit-animation: @arguments;
+// 	-moz-animation: @arguments;
+// 	animation: @arguments;
+// }
+
+// @keyframes move {
+//     0% {left: 0%;}
+//     100% {left:100%;}
+//   }
+
+.keyframes(@name,@rules) {
+    @-webkit-keyframes @name {
+        @rules();
+    }
+    @-moz-keyframes @name {
+        @rules();
+    }
+    @-ms-keyframes @name {
+        @rules();
+    }
+    @-o-keyframes @name {
+        @rules();
+    }
+    @keyframes @name {
+        @rules();
+    }
+}
+
+// 2. Use the mixin to create an animation
+
+.keyframes(move, {
     0% {left: 0%;}
     100% {left:100%;}
-}
+  }
+);
+
+// @keyframes move {
+//     0% {left: 0%;}
+//     100% {left:100%;}
+//   }
